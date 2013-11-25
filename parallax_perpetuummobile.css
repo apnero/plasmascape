@@ -40,7 +40,7 @@ skins available:
 	z-index:10;
 }
 .myloader {
-	background:url(skins/perpetuummobile/loader.gif);
+	background:url(img/loader.gif);
 	width:37px;
 	height:37px;
 	position:absolute;

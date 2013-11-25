@@ -415,11 +415,11 @@
 
 
                     <!-- Contact Form -->
-                    <form class="contact-form">
-
-                        <input type="text" class="form-control" placeholder="Full Name" data-animation="fadeInLeftBig" required="required" />
-                        <input type="email" class="form-control" placeholder="Email Address" required="required" data-animation="fadeInLeftBig" data-animation-delay=".1s" />
-                        <textarea rows="10" class="form-control" placeholder="Message" data-animation="fadeInLeftBig" data-animation-delay=".2s" required="required"></textarea>
+                    <form id="contactform" action="/getFormData" method="post" class="contact-form" name="send-contact">
+					
+                        <input type="text" name="name" class="form-control" placeholder="Full Name" data-animation="fadeInLeftBig" required="required" />
+                        <input type="email" name="email" class="form-control" placeholder="Email Address" required="required" data-animation="fadeInLeftBig" data-animation-delay=".1s" />
+                        <textarea rows="10" name="message" class="form-control" placeholder="Message" data-animation="fadeInLeftBig" data-animation-delay=".2s" required="required"></textarea>
                         <button type="submit" class="btn btn-brand btn-lg" data-animation="fadeInLeftBig" data-animation-delay=".3s">Send Message&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></button>
                     </form>
                 </div>
@@ -438,19 +438,23 @@
                 </div>
             </div>
         </div>
-		
-		<div id="confirmEmailDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
+			<div id="confirmEmailDialog" class="modal fade" tabindex="-1" role="dialog" >
 				<div class="modal-header">
 					<a href="#" class="close" data-dismiss="modal">&times;</a>
-					<h3 style="color:#5e6638">Email Sent to the Cannon Ridge Training Center!</h3>
+					<h1>Email Sent to PlasmaScape!</h1>
 				</div>
 				<div class="modal-body">
-					<h5>Thank you for your interest in Cannon Ridge Training Center.  Someone from our team will get back to you soon.</h5>
+					<h2>We value your interest and we will get back to you shortly</h2>
 				</div>
 				<div class="modal-footer">
-					<a href="#" class="btn btn-custom" onclick="$('#confirmEmailDialog').modal('hide');">OK</a>
+					<a href="#" class="btn btn-primary" onclick="$('#confirmEmailDialog').modal('hide');">OK</a>
 				</div>
 	</div>
+	
+	</section>
+
+	
+	
 
 
     <!-- Footer -->
@@ -464,19 +468,16 @@
     </footer>
 
 
-    <!-- Jquery -->
+	<!-- Jquery -->
     <script src="js/jquery-1.10.2.min.js"></script>
-
-    <!-- Bootstrap Js -->
-    <script src="js/bootstrap.min.js"></script>
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
 <script src="js/jQueryRotateCompressed.2.2.js" type="text/javascript"></script>
 <script src="js/parallax_perpetuummobile.js" type="text/javascript"></script>
 <!--[if IE]><script src="js/excanvas.compiled.js" type="text/javascript"></script><![endif]-->
 <!-- must have -->
+
 
     <!-- Waypoints Js For Scrolling Elements -->
     <script src="plugins/waypoints/waypoints.min.js"></script>
@@ -503,10 +504,15 @@
 	
 	
 
+     <!-- Bootstrap Js -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>  
+
 
     <!-- Required Jquery Script For Initializer -->
 
     <script type="text/javascript">
+	
+
         $(function () {
 
 			jQuery('#parallax_perpetuummobile_thumbs').parallax_perpetuummobile({
@@ -667,17 +673,17 @@
 
         });
 		
-		$("contact-form").submit(function(e) {
-		e.preventDefault(); // Prevents the page from refreshing
-		var $this = $(this); // `this` refers to the current form element
-		$.post(
-			$this.attr("action"), // Gets the URL to sent the post to
-			$this.serialize(), // Serializes form data in standard format
-			function(data) { /** code to handle response **/ },
-			"json" // The format the response should be in
-		);
-		$('#confirmEmailDialog').modal('toggle')
-	});
+		$('#contactform').submit(function(e) {
+			e.preventDefault(); // Prevents the page from refreshing
+			var $this = $(this); // `this` refers to the current form element
+			$.post(
+				$this.attr("action"), // Gets the URL to sent the post to
+				$this.serialize(), // Serializes form data in standard format
+				function(data) { /** code to handle response **/ },
+				"json" // The format the response should be in
+			);
+			$('#confirmEmailDialog').modal('toggle')
+		});
     </script>
 
 </body>
