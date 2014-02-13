@@ -485,48 +485,6 @@
 
 
 
-            //#region Home Screen Sliders
-
-            //Text Rotator In Homescreen
-            var flexSlider = $('.flexslider').flexslider({
-                animation: "slide",
-                direction: "vertical",
-                controlNav: false,
-                directionNav: false,
-                touch: false,
-                keyboard: false,
-                pauseOnAction: false,
-                slideshow: false,
-                animationSpeed: 1000
-
-            }).data('flexslider');
-
-
-            //Icon Slider In Homescreen
-            var SliderOptions = {
-                autoPlay: true,
-                autoPlayDelay: 3000,
-                pauseOnHover: false,
-                animateStartingFrameIn: true,
-                transitionThreshold: true,
-                fadeFrameWhenSkipped: false,
-                reverseAnimationsWhenNavigatingBackwards: false,
-                nextButton: ".next-slide.home-screen-slider-nav",
-                prevButton: ".prev-slide.home-screen-slider-nav",
-                //pauseButton:".play-pause-home-screen-slider",
-                preloader: true
-            }
-
-            //Slider Text On Icon Slide 
-            var sequence = $(".home-screen-slider").sequence(SliderOptions).data("sequence");
-            sequence.beforeNextFrameAnimatesIn = function () {
-                flexSlider.flexAnimate(sequence.nextFrameID - 1);
-            };
-
-            //Prevent Scrolling On Slider Next/Prev Navigation
-            $(SliderOptions.nextButton + "," + SliderOptions.prevButton).click(function (evt) {
-                evt.preventDefault();
-            });
 
 
         });
